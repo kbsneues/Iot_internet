@@ -1,0 +1,16 @@
+{
+  "name": "algorithm",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "parcel-bundler": "^1.12.5"
+  }
+}
