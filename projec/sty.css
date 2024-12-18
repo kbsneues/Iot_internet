@@ -1,0 +1,373 @@
+body {
+  display: flex;
+  margin: 20px;
+  height: calc(100vh - 40px);
+  gap: 20px;
+}
+
+#map,
+#middle,
+#content {
+  flex: 1;
+  max-height: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow-y: auto;
+}
+
+#map {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 10px;
+  height: calc(100vh - 40px);
+  max-height: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.region-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f9f9f9, #e3e3e3);
+  padding: 15px 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.region-button:hover {
+  background: linear-gradient(135deg, #eaeaea, #d6d6d6);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.region-button:active {
+  background: linear-gradient(135deg, #d6d6d6, #c2c2c2);
+  transform: scale(0.95);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.region-button::before {
+  margin-right: 8px;
+  font-size: 1.2em;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+#middle {
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 16px;
+}
+
+#middle ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#middle li {
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+#middle li:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+#middle li:active {
+  background-color: #ddd;
+}
+
+#content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#content li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#content li span {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.good {
+  color: #2ecc71;
+}
+
+.moderate {
+  color: #f1c40f;
+}
+
+.bad {
+  color: #e67e22;
+}
+
+.worst {
+  color: #e74c3c;
+}
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  background-color: #ecf0f1;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.status-bar .level {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #bdc3c7;
+  color: #fff;
+  margin-right: 5px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.status-bar .level:last-child {
+  margin-right: 0;
+}
+
+.status-bar .level.active {
+  transform: scale(1.1);
+}
+
+.status-bar .good.active {
+  background-color: #2ecc71;
+}
+
+.status-bar .moderate.active {
+  background-color: #f1c40f;
+}
+
+.status-bar .bad.active {
+  background-color: #e67e22;
+}
+
+.status-bar .worst.active {
+  background-color: #e74c3c;
+}
+
+.project-title,
+.infor {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #8000ff;
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 1.5s ease-in-out;
+  border: none;
+  background-color: transparent;
+}
+
+.project-title::before {
+  content: "🇰🇷";
+  font-size: 40px;
+  display: block;
+  margin: 0 auto 10px;
+  animation: bounce 1.5s infinite;
+}
+
+.infor::before {
+  content: "😷";
+  font-size: 40px;
+  display: block;
+  margin: 0 auto 10px;
+  animation: bounce 1.5s infinite;
+}
+
+.project-title::after,
+.infor::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #8000ff;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+#middle h2,
+#content h2 {
+  font-size: 32px;
+  color: #4a90e2;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1.5s ease-in-out;
+  position: relative;
+}
+
+#middle h2::after,
+#content h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 4px;
+  background-color: #4a90e2;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#middle h2::before {
+  content: "🇰🇷";
+  font-size: 40px;
+  display: block;
+  margin: 0 auto 10px;
+  animation: bounce 1.5s infinite;
+}
+
+#content h2::before {
+  content: "😷";
+  font-size: 40px;
+  display: block;
+  margin: 0 auto 10px;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+  }
+
+  #map,
+  #middle,
+  #content {
+    flex: 1 1 auto;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    padding: 8px;
+  }
+
+  #middle li,
+  #content li {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  .status-bar .level {
+    padding: 12px;
+    font-size: 12px;
+  }
+
+  .project-title,
+  .infor {
+    font-size: 1.5em;
+    padding: 8px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+
+  #map,
+  #middle,
+  #content {
+    flex: 1 1 auto;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 5px;
+  }
+
+  #middle li,
+  #content li {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .region-button {
+    padding: 10px 15px;
+    font-size: 18px;
+  }
+
+  .region-button:hover {
+    transform: none;
+  }
+
+  .project-title {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+}
+
+#map,
+#middle,
+#content {
+  box-sizing: border-box;
+}

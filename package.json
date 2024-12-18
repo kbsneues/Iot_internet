@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "express": "^4.21.1",
     "lodash": "^4.17.21",
     "parcel-bundler": "^1.12.5"
   }
